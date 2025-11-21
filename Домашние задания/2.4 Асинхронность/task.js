@@ -1,8 +1,6 @@
 class AlarmClock {
   constructor() {
-    // Коллекция всех будильников
     this.alarmCollection = [];
-    // id интервала, по умолчанию нет интервала
     this.intervalId = null;
   }
 
@@ -10,8 +8,6 @@ class AlarmClock {
     if (!time || !callback) {
       throw new Error('Отсутствуют обязательные аргументы');
     }
-
-    // Проверка на дубликат времени
     if (this.alarmCollection.some(alarm => alarm.time === time)) {
       console.warn('Уже присутствует звонок на это же время');
     }
@@ -19,7 +15,7 @@ class AlarmClock {
     this.alarmCollection.push({
       time,
       callback,
-      canCall: true, // можно ли сейчас вызывать этот будильник
+      canCall: true,
     });
   }
 
@@ -37,7 +33,6 @@ class AlarmClock {
   }
 
   start() {
-    // Если интервал уже запущен — ничего не делаем
     if (this.intervalId !== null) {
       return;
     }
